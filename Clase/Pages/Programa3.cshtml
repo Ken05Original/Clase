@@ -1,0 +1,131 @@
+﻿@page
+@model Clase.Pages.Programa3Model
+@{
+    ViewData["Title"] = "Programa 3 - Reservación de Hotel";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-9">
+            <div class="card shadow-sm border-0">
+                <div class="card-header text-white" style="background-color: #8c68cd;">
+                    <h4 class="mb-0">Reservación de hotel</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <form method="post">
+                        <!-- Campos principales -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label id="lblTipoHabitacion" for="ddlTipoHabitacion" class="form-label">Tipo de habitación</label>
+                                <select id="ddlTipoHabitacion" asp-for="TipoHabitacion" class="form-select">
+                                    <option value="0">Seleccione</option>
+                                    <option value="1">Sencilla ($800/noche)</option>
+                                    <option value="2">Doble ($1,200/noche)</option>
+                                    <option value="3">Suite ($1,800/noche)</option>
+                                    <option value="4">Master Suite ($2,500/noche)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label id="lblNoches" for="txtNoches" class="form-label">Número de noches</label>
+                                <input id="txtNoches" asp-for="Noches" class="form-control" type="number" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label id="lblTipoHuesped" for="ddlTipoHuesped" class="form-label">Tipo de huésped</label>
+                                <select id="ddlTipoHuesped" asp-for="TipoHuesped" class="form-select">
+                                    <option value="0">Seleccione</option>
+                                    <option value="1">Regular (Sin descuento)</option>
+                                    <option value="2">Frecuente (10% desc.)</option>
+                                    <option value="3">VIP / Senior (15% desc.)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label id="lblHuespedes" for="txtHuespedes" class="form-label">Número de huéspedes</label>
+                                <input id="txtHuespedes" asp-for="Huespedes" class="form-control" type="number" />
+                            </div>
+
+                            <!-- Servicios Adicionales (Checkboxes) -->
+                            <div class="col-12 mt-4">
+                                <label class="form-label fw-bold">Servicios adicionales</label>
+                                <div class="border rounded p-3">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" asp-for="ChkDesayuno" id="chkDesayuno">
+                                        <label class="form-check-label fw-semibold" for="chkDesayuno">
+                                            Desayuno
+                                        </label>
+                                        <div class="text-muted small">$150 por persona / noche</div>
+                                    </div>
+
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" asp-for="ChkEstacionamiento" id="chkEstacionamiento">
+                                        <label class="form-check-label fw-semibold" for="chkEstacionamiento">
+                                            Estacionamiento
+                                        </label>
+                                        <div class="text-muted small">$100 por noche</div>
+                                    </div>
+
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" asp-for="ChkWifi" id="chkWifi">
+                                        <label class="form-check-label fw-semibold" for="chkWifi">
+                                            WiFi Premium
+                                        </label>
+                                        <div class="text-muted small">$80 por noche</div>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" asp-for="ChkSpa" id="chkSpa">
+                                        <label class="form-check-label fw-semibold" for="chkSpa">
+                                            Acceso al spa
+                                        </label>
+                                        <div class="text-muted small">$250 por noche</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- IVA y Descuento -->
+                            <div class="col-md-6 mt-3">
+                                <label id="lblIVA" for="txtIVA" class="form-label">IVA</label>
+                                <div class="input-group">
+                                    <input id="txtIVA" asp-for="IVA" class="form-control bg-light" type="number" readonly />
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-3">
+                                <label id="lblDescuento" for="txtDescuento" class="form-label">Descuento</label>
+                                <input id="txtDescuento" asp-for="DescuentoTexto" class="form-control bg-light" type="text" readonly />
+                            </div>
+                        </div>
+
+                        <!-- Separador -->
+                        <hr class="my-4">
+
+                        <!-- Alertas -->
+                        @if (!string.IsNullOrEmpty(Model.ResultadoOK))
+                        {
+                            <div class="alert alert-success mt-2 p-2 text-center">
+                                @Html.Raw(Model.ResultadoOK)
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.ResultadoNoOK))
+                        {
+                            <div class="alert alert-danger mt-2 p-2 text-center">
+                                @Html.Raw(Model.ResultadoNoOK)
+                            </div>
+                        }
+
+                        <!-- Botones -->
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button type="submit" class="btn btn-outline-secondary" asp-page-handler="Limpiar">Limpiar</button>
+                            <button type="submit" class="btn text-white px-4" style="background-color: #8c68cd;" asp-page-handler="Calcular">Calcular</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
