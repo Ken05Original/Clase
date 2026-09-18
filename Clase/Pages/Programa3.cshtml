@@ -124,3 +124,27 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.getElementById("ddlTipoHuesped").addEventListener("change", function () {
+
+            let tipoHuesped = this.value;
+            let descuento = document.getElementById("txtDescuento");
+
+            if (tipoHuesped == "1") {
+                descuento.value = "0%";
+            }
+            else if (tipoHuesped == "2") {
+                descuento.value = "10%";
+            }
+            else if (tipoHuesped == "3") {
+                descuento.value = "20%";
+            }
+            else {
+                descuento.value = "";
+            }
+
+        });
+    </script>
+}

@@ -20,11 +20,11 @@ namespace CodeBehind.Pages
         // creo lista privada estatica porque no podremos modificarla con el tipo de objeto de la clase que creamos
         private static List<Producto> lstProducto = new List<Producto>
         {
-            new Producto {Id = 1, Nombre="GTA VI", Categoria="Categoria 1", Precio = 49.99m, Stock=5, ImagenUrl="https://m.media-amazon.com/images/I/8193phjuCML._AC_UF1000,1000_QL80_.jpg"},
-            new Producto {Id = 2, Nombre="ZELDA OCARINA OF TIME", Categoria="Categoria 1", Precio = 149.99m, Stock=5, ImagenUrl="https://http2.mlstatic.com/D_NQ_NP_763449-MLM115906328382_092026-O.webp"},
-            new Producto {Id = 3, Nombre="Producto C", Categoria="Categoria 1", Precio = 79.99m, Stock=5, ImagenUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjKyi3LUVhheP3okEbhtlXFYQ8y1QVTPvVviTIoub8NsAFfMgT7gBXK7I&s=10"},
-            new Producto {Id = 4, Nombre="Producto D", Categoria="Categoria 1", Precio = 129.99m, Stock=5, ImagenUrl=""},
-            new Producto {Id = 5, Nombre="Producto E", Categoria="Categoria 1", Precio = 9.99m, Stock=5, ImagenUrl=""}
+            new Producto {Id = 1, Nombre="GTA VI", Categoria="Acción", Precio = 49.99m, Stock=5, ImagenUrl="https://m.media-amazon.com/images/I/8193phjuCML._AC_UF1000,1000_QL80_.jpg"},
+            new Producto {Id = 2, Nombre="Zelda Ocarina of time", Categoria="Aventura", Precio = 149.99m, Stock=5, ImagenUrl="https://http2.mlstatic.com/D_NQ_NP_763449-MLM115906328382_092026-O.webp"},
+            new Producto {Id = 3, Nombre="Donkey Kong Bananza", Categoria="Acción", Precio = 79.99m, Stock=5, ImagenUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjKyi3LUVhheP3okEbhtlXFYQ8y1QVTPvVviTIoub8NsAFfMgT7gBXK7I&s=10"},
+            new Producto {Id = 4, Nombre="Minecraft", Categoria="Simulador", Precio = 39.99m, Stock=5, ImagenUrl="https://i.pinimg.com/736x/f5/60/cc/f560cc7d9a907ae6e4bc5d914a844889.jpg"},
+            new Producto {Id = 5, Nombre="GTA V", Categoria="Acción", Precio = 49.99m, Stock=5, ImagenUrl="https://i.blogs.es/2c9c70/gta-20v-20portada-20grande/450_1000.webp"}
 
         };
 
