@@ -44,54 +44,28 @@ namespace Clase.Pages
 
                 if (lstErrores.Count == 0)
                 {
-                    // Precios base por servicio
-                    decimal precioServicio = TipoServicio switch
+                    decimal costo_servicio = TipoServicio switch
                     {
-                        1 => 350m, // Limpieza interna
-                        2 => 600m, // Mantenimiento preventivo
-                        3 => 450m, // Cambio de pasta térmica
-                        4 => 800m, // Formateo e instalación
+                        1 => 350m,
+                        2 => 600m,
+                        3 => 450m,
+                        4 => 800m,
                         _ => 0m
+
                     };
 
-                    // Cargos adicionales por equipo
-                    decimal cargoEquipo = TipoEquipo switch
+                    decimal costo_equipo = TipoEquipo switch
                     {
-                        1 => 0m,   // Laptop
-                        2 => 100m, // PC de escritorio
-                        3 => 150m, // All-in-One
-                        4 => 300m, // Mac
+                        1 => 100m,
+                        2 => 150m,
+                        3 => 300m,
                         _ => 0m
+
                     };
 
-                    // Cargo por garantía extendida
-                    decimal cargoGarantia = GarantiaExtendida switch
-                    {
-                        1 => 0m,   // 30 días
-                        2 => 150m, // 90 días
-                        3 => 300m, // 180 días
-                        _ => 0m
-                    };
+                    
 
-                    // Cargo por prioridad
-                    decimal cargoPrioridad = PrioridadServicio switch
-                    {
-                        1 => 0m,   // Normal
-                        2 => 200m, // Urgente
-                        3 => 400m, // Express
-                        _ => 0m
-                    };
-
-                    // Cálculo del total
-                    decimal costoUnitario = precioServicio + cargoEquipo + cargoGarantia + cargoPrioridad;
-                    decimal subtotal = costoUnitario * NumeroEquipos;
-                    decimal montoIVA = subtotal * (IVA / 100m);
-                    decimal total = subtotal + montoIVA;
-
-                    ResultadoOK = $"<b>Cálculo exitoso:</b><br>" +
-                                 $"Subtotal: ${subtotal:N2} MXN<br>" +
-                                 $"IVA (16%): ${montoIVA:N2} MXN<br>" +
-                                 $"<b>Total a pagar: ${total:N2} MXN</b>";
+                    ResultadoOK = "YUPI SIN ERRORES";
                 }
                 else
                 {

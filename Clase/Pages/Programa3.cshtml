@@ -18,12 +18,7 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label id="lblTipoHabitacion" for="ddlTipoHabitacion" class="form-label">Tipo de habitación</label>
-                                <select id="ddlTipoHabitacion" asp-for="TipoHabitacion" class="form-select">
-                                    <option value="0">Seleccione</option>
-                                    <option value="1">Sencilla ($800/noche)</option>
-                                    <option value="2">Doble ($1,200/noche)</option>
-                                    <option value="3">Suite ($1,800/noche)</option>
-                                    <option value="4">Master Suite ($2,500/noche)</option>
+                                <select id="ddlTipoHabitacion" asp-for="TipoHabitacion"asp-items="Model.ddlTipoHabitacion" class="form-select">
                                 </select>
                             </div>
 
