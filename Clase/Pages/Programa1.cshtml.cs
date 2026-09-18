@@ -48,7 +48,67 @@ namespace CodeBehind.Pages
                 // Validar que no haya errores
                 if (lstErrores.Count == 0)
                 {
-                    ResultadoOK = "PRUEBITA JIJI";
+                    decimal precio_producto = Producto switch
+                    {
+                        1 => 15000m, // este sería el case , tipo case 1
+                        2 => 350m, // case 2
+                        3 => 1200m, // case 3
+                        4 => 3800m,
+                        _ => 0 // para el default
+                    };
+
+                    decimal tipo_cliente = TipoCliente switch
+                    {
+                        1 => 0m,
+                        2 => 0.05m,
+                        3 => 0.15m,
+                        _ => 0m
+
+                    };
+
+                    int metodo_envio = MetodoEnvio switch
+                    {
+                      1 => 0,
+                      2 => 150,
+                      3 => 300,
+                      _ => 0  
+                    };
+
+
+                decimal subtotal_base = precio_producto * Cantidad; // subtotal de los productos por la cantidad
+                decimal descuento_admin = subtotal_base * (Descuento / 100m); // calculo el descuento que puso el administrador
+                decimal subtotal_descuento_1 = subtotal_base - descuento_admin; // se resta el primer descuento
+                decimal monto_descuento_por_cliente = subtotal_base * tipo_cliente; // se calcula el descuento por tipo del cliente TODO LOS DESCUENTOS ES POR EL SUBTOTAL PREDETERMINADO
+                decimal subtotal_descuento_2 = subtotal_descuento_1 - monto_descuento_por_cliente; // se resta el segundo descuento
+                decimal monto_iva = subtotal_descuento_2 * 0.16m;
+                decimal total_pagar = subtotal_descuento_2 + monto_iva;
+                
+                
+
+
+                ResultadoOK = "<div class=table-responsive>" + 
+                "<table class='table'>" + 
+                "<tr>" +
+                "<td>Subtotal base $</td>" +
+                "<td>Monto Descuento (Que elejiste)</td>" +
+                "<td>Subtotal Después del Primer Descuento $</td>" +
+                "<td>Monto Descuento (Por Tipo de Cliente)</td>" +
+                "<td>Subtotal Después del Segundo Descuento</td>" +
+                "<td>Monto IVA</td>" +
+                "<td>Total a Pagar $</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" + subtotal_base + "</td>"+
+                "<td>" + descuento_admin + "</td>"+
+                "<td>" + subtotal_descuento_1 + "</td>"+
+                "<td>" + monto_descuento_por_cliente + "</td>"+
+                "<td>" + subtotal_descuento_2 + "</td>"+
+                "<td>" + monto_iva + "</td>"+
+                "<td>" + total_pagar + "</td>"+
+                "</tr>" +
+                "</table>" + 
+                "</div>";
+                 
                 }
                 else
                 {

@@ -1,0 +1,72 @@
+@page
+@model CodeBehind.Pages.Programa4Model
+@{
+    ViewData["Title"] = "Catálogo";
+}
+
+<div class="container my-4">
+    <h2>Catálogo de Productos</h2>
+
+    @* Mensajes simplificados *@
+    @if (!string.IsNullOrEmpty(Model.Mensaje))
+    {
+        <div class="alert alert-info">@Model.Mensaje</div>
+    }
+
+    <div class="row">
+        @foreach (var item in Model.Productos)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+
+                    <img src="@item.ImagenUrl"
+                         class="card-img-top producto-imagen"
+                         alt="@item.Nombre">
+
+                    <div class="card-body">
+                        <h5>@item.Nombre</h5>
+
+                        <p class="text-muted">@item.Categoria</p>
+
+                        <p class="fw-bold">$@item.Precio</p>
+
+                        <p>Stock: @item.Stock</p>
+
+                        <form method="post">
+                            <input type="hidden"
+                                   name="idProducto"
+                                   value="@item.Id" />
+
+                            @if (item.Stock > 0)
+                            {
+                                <button type="submit"
+                                        class="btn btn-primary w-100">
+                                    Comprar
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="button"
+                                        class="btn btn-secondary w-100"
+                                        disabled>
+                                    Agotado
+                                </button>
+                            }
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .producto-imagen {
+        width: 250px;
+        height: 250px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    }
+</style>

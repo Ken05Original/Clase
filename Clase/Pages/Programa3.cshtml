@@ -18,12 +18,7 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label id="lblTipoHabitacion" for="ddlTipoHabitacion" class="form-label">Tipo de habitación</label>
-                                <select id="ddlTipoHabitacion" asp-for="TipoHabitacion" class="form-select">
-                                    <option value="0">Seleccione</option>
-                                    <option value="1">Sencilla ($800/noche)</option>
-                                    <option value="2">Doble ($1,200/noche)</option>
-                                    <option value="3">Suite ($1,800/noche)</option>
-                                    <option value="4">Master Suite ($2,500/noche)</option>
+                                <select id="ddlTipoHabitacion" asp-for="TipoHabitacion"asp-items="Model.ddlTipoHabitacion" class="form-select">
                                 </select>
                             </div>
 
@@ -129,3 +124,27 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.getElementById("ddlTipoHuesped").addEventListener("change", function () {
+
+            let tipoHuesped = this.value;
+            let descuento = document.getElementById("txtDescuento");
+
+            if (tipoHuesped == "1") {
+                descuento.value = "0%";
+            }
+            else if (tipoHuesped == "2") {
+                descuento.value = "10%";
+            }
+            else if (tipoHuesped == "3") {
+                descuento.value = "20%";
+            }
+            else {
+                descuento.value = "";
+            }
+
+        });
+    </script>
+}
